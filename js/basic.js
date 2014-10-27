@@ -348,6 +348,8 @@ var changedBack = false;
 
 $(document).ready(function(){
 	
+	setTimeout(function(){$("#backgroundImage").addClass("show")}, 300);
+	
 	$(window).mouseup(function(){
        if(groundDown){
 	   		groundEnd(event);
@@ -1580,7 +1582,7 @@ click(function(e){
 				
 
 		$(".skipwrapper").show();
-		
+		$("#backgroundImage").removeClass("show");
 		setTimeout(function(){
 			$("#thirdlayer").fadeOut(300);
 			$("#instructionTap").addClass("fadeInBottom");
