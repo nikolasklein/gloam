@@ -1976,6 +1976,18 @@ click(function(e){
 			settingLatitudes(999, 999, 999);
 		}		
 	}
+
+
+	//hier kommen die verschiedenen keys rein um gloam.io auch mit tastatur bedienen zu können…	
+	$("body").keyup(function(e){
+	    if(e.which == 27){
+		    
+	        if(!$("#skip").hasClass("fadeInUpHideBottom") && $("#skip").hasClass("fadeInUp") && !$("#skip").hasClass("activeButton")){
+		        $("#skip").click();
+	        }
+	    }
+
+	});
 	
 
 	
