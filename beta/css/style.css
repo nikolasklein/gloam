@@ -1,0 +1,193 @@
+@import url(http://fonts.googleapis.com/css?family=Fira+Sans:300,700);
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+html {
+	display: table;
+}
+
+html, body, div, a, span {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/*
+@font-face {
+	font-family: 'Fira';
+	src: url("firasans-light-webfont.eot");
+	src: url("firasans-light-webfont.eot?#iefix") format("embedded-opentype"), url("firasans-light-webfont.woff") format("woff"), url("firasans-light-webfont.ttf") format("truetype"), url("firasans-light-webfont.svg#fira_sanslight") format("svg");
+	font-weight: 200;
+	font-style: normal;
+}
+*/
+@font-face {
+	font-family: 'Fira';
+	src: url("firasans-thin-webfont.eot");
+	src: url("firasans-thin-webfont.eot?#iefix") format("embedded-opentype"), url("firasans-thin-webfont.woff") format("woff"), url("firasans-thin-webfont.ttf") format("truetype");
+	font-weight: 100;
+	font-style: normal;
+}
+
+
+body {
+	background-color: #d1d1d1;
+	text-align: center;
+	margin: 0px;
+	font-weight: 300;
+	color: #ffffff;
+	font-family:"Fira Sans", "Open Sans", "Source Sans", "Helvetica Neue", Helvetica, Arial;
+    display:table-cell;	
+    line-height: 1.2em;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 100%;
+    
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center bottom;
+	background-image: url(../bg.png);
+	
+	transition: background-image 0.6s;
+	-moz-transition: background-image 0.6s;
+	-webkit-transition: background-image 0.6s;
+	-o-transition: background-image 0.6s;
+	
+	
+	-webkit-font-smoothing: subpixel-antialiased !important;
+	
+}
+
+h4, .title, .nav{
+	-webkit-font-smoothing: antialiased !important;
+}
+
+
+h1 {
+	font-family: "Fira";
+	font-weight: 100 !important;
+	font-size: 240%;
+	text-align: left;
+	margin: 0px !important;
+	margin-bottom: 0.7em !important;
+}
+
+
+h2 {
+	font-size: 160%;
+	font-weight: 300;
+    margin-bottom: 0.7em;
+    margin-top: 0px;	  
+}
+
+h3 {
+	font-size: 140%;
+	font-weight: 400;
+    margin-bottom: 0.3em;
+    margin-top: 0px;  
+}
+
+h4 {
+	font-size: 115%;
+	font-weight: 400;
+	margin-bottom: 0.1em;
+	margin-top: 0px;
+}
+
+strong{
+	font-weight: bold;
+}
+
+em{
+	font-style: italic;
+}
+
+
+.big{
+	max-width: 300px;
+}
+
+.bigger{
+	padding-left: 5%;
+}
+
+#discovery{
+	padding-top: 0px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	line-height: 1.35em;
+}
+
+
+.small{
+	position: absolute;
+	bottom: 5%;
+	padding-left: 5%;
+}
+
+#discoveryday{
+	opacity: 0.4;
+	overflow: visible;
+	transition: border-bottom 0.5s, opacity 0.5s;
+	-moz-transition: border-bottom 0.5s, opacity 0.5s;
+	-webkit-transition: border-bottom 0.5s, opacity 0.5s;
+	-o-transition: border-bottom 0.5s, opacity 0.5s;	
+}
+
+a{
+
+	opacity: 0.3;
+	text-decoration: underline;
+	color: white;
+	transition: border-bottom 0.5s, opacity 0.5s;
+	-moz-transition: border-bottom 0.5s, opacity 0.5s;
+	-webkit-transition: border-bottom 0.5s, opacity 0.5s;
+	-o-transition: border-bottom 0.5s, opacity 0.5s;
+}
+
+a:hover{
+	opacity: 1;
+}
+
+a.white{
+	opacity: 1;
+}
+
+a.white:hover{
+	opacity: 0.7;
+}
+
+h1 a{
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(255,255,255,0.19);
+}
+
+
+
+
+.betahide {
+	opacity: 0.4;
+}
+
+@media all and (min-width: 0px) and (max-width: 400px) {
+  body {
+    font-size: 70% !important;
+  }
+}
+
+@media all and (min-width: 401px) and (max-width: 899px) {
+  body {
+    font-size: 85% !important;
+  }
+}
+
+
+
+
+
+
+
+

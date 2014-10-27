@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>gloam.io – the discovery of the day</title>
+			
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="apple-touch-icon" href="icon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+				
+		<meta name="author" content="Nikolas Klein">
+		<meta name="keywords" content="Nikolas, Klein, Web, Design, Darmstadt, Interaktionsgestaltung, Ghana, Hochschule für Gestaltung, Schwäbisch Gmünd, HfG">
+		<meta name="language" content="German">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8;">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+		<script src="js/rainbowvis.js"></script>
+		<script src="js/fastclick.js"></script>
+		<script src="js/transit.js"></script>
+
+
+		<script src="js/jquery.parse.min.js"></script>		
+		<script src="js/basic.js"></script>
+		<script src="js/jquery.easing.js"></script>	
+		<script src="js/debounce.js"></script>
+		<script>
+			document.createElement('header');
+			document.createElement('footer');
+			document.createElement('section');
+			document.createElement('aside');
+			document.createElement('nav');
+			document.createElement('article');
+		</script>			
+	</head>
+	<body>
+		<div id="editingNow">developing right now — adjusting cursor details and click adjustments</div>
+		<div id="fullscreenwrapper">
+			<div id="console"><span id="console_first">consol</span><br><span id="console_second"></span></div>
+			<div id="consoleTwo">dont find me??</div>		
+			<div id="gradientwrapper"></div>
+			<div id="detailLatitude"></div>
+			<div id="groundlayer" class="layer">
+				<div id="timehandler">
+				<div  id="timehandlerWrapper">
+					<div id="timehandlerCircle">
+	
+					</div>
+				</div>
+			</div>	</div>
+			<div id="secondlayer" class="layer" style="display:none"></div>		
+			<div id="thirdlayer" class="layer">
+				<div class="cell vmiddle">
+				<div class="container" id="introductionText">
+					<h1 class="mainMenu fadeInBottomHideFar">gloam.io</h1>
+					<p  class="mainMenu fadeInBottomHideFar">
+						gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience. <a href="http://vimeo.com/nikolasklein/gloam" target="_blank" title="made with gloam.io">watch the video</a><br>
+						<span class="betahide credit">handcrafted by <a href="http://www.nikolasklein.de">Nikolas Klein</a></span>
+					</p>
+					<div id="readmoreText">
+						<h2>Where does it come from?</h2>
+						It started as a student project at the HfG Schwäbisch Gmuend. The task was to create something that visualizes programmed and repeated data. I found it interesting to work with sunrise and sunset times, because not only do they change over the course of a year, but they also change differently according to your location on earth.<br>
+						When I had submitted my project in July 2014, I decided to continue developing it and therefore created the interface and the touchversion.
+						<h2>Basic Functionality</h2>
+						If you tap/click in gloam.io it triggers a series of events. gloam.io calculates the latitude depending on the y-position of your tap/click in relation to the whole window height. That latitude will be transferred to a PHP-Script to calculate the sunrise, sunset and twilight times. When these times come back from the server they are used to create a gradient according to the global date and time. gloam.io interpolates between sunrise, sunset and astronomically defined twilight times to create a smooth transition.
+						<h2>Colors</h2>
+						This was one of the hardest parts of my project. gloam.io interpolates on 4 different levels between 24 colors. So there are nearly 100 different color hues which are used to create this visualization. They were handpicked by watching a lot of sunrise/sunset time-lapses and then adjusted to the overall look and feel.
+						<h2>Nikolas Klein, Interaction Design Student</h2>
+						My name is <a href="http://www.nikolasklein.de">Nikolas Klein</a> and im a student in interaction design at the HfG in Schwäbisch Gmünd. I love what I'm doing! If you have any feedback or want to contact me—<a href="mailto:nikolas.klein@web.de?subject=Hi%20Niko!">feel free to do so!</a><br>
+						<h2>Downloads</h2>
+						Download a set of cards which are ready to print …<br>
+						<a href="postcards.pdf" title="download a set of postcards here …" id="postcards"><img src="postcards.png" alt="postcards" width="100%" height="auto"></a>
+
+						<h2>#nicetohave<span class="betahide"> / my todo list</span></h2>
+						<ul class="nicetohave">
+							<li>sharing of created visualizations (!)</li>
+							<li>fixing rendering issues in safari and firefox</li>
+							<li>PHP bug fixing when there is polar night/day</li>
+							<li>possibility to delete only one element</li>
+							<li>debounce and throttle a lot of inputs</li>
+							<li>save skipped tutorial in cookie</li>
+							<li>modernizr check</li>
+						</ul>
+						<h2>#done</h2>
+						<ul class="nicetohave">
+							<li>direct feedback while trying to delete (10-19-14)</li>						
+							<li>better swipe detection when deleting (10-19-14)</li>
+							<li>added latitude information (10-17-14)</li>
+							<li>implement mouse input (10-16-14)</li>
+							<li>better cross browser support (10-16-14)</li>
+						</ul>
+					</div>
+					<div class="button mainMenu fadeInBottomHideFar" id="readmore">read more …</div>
+					<div class="button mainMenu fadeInBottomHideFar" id="start">start</div>
+				</div>
+			</div>
+			</div>
+			<div id="sharelayer" class="layer">
+			<div class="cell vmiddle">
+				<div class="container" id="sharingText">
+					<h1 class="shareMenu fadeInTopHideFar">sharing<span class="betahide">/not quite ready</span></h1>
+					<p class="shareMenu fadeInTopHideFar">
+						Of course I want you to share your own beautiful visualisations—I'm working on that. <br>
+						In the meantime there is still the option to share gloam.io itself, if you like it.
+					</p>
+					<a target="_blank" class="shareLink" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gloam.io/beta" title="share gloam.io on facebook">
+						<div class="button shareMenu fadeInTopHideFar sharebutton" id="facebookshare">facebook</div>
+					</a>
+					<a target="_blank" class="shareLink" href="https://twitter.com/share?hashtags=dataviz,creativecoding,details" title="tweet about gloam.io">
+						<div class="button shareMenu fadeInTopHideFar sharebutton" id="twittershare">twitter</div>
+					</a>
+					<a target="_blank" class="shareLink" href="https://plus.google.com/share?url=http://www.gloam.io/beta" title="share gloam.io on google+">
+						<div class="button shareMenu fadeInTopHideFar sharebutton" id="googleshare">google+</div>
+					</a>
+				</div>
+			</div>
+		</div>
+			<div id="deletelayer" class="layer noselect"></div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="instructionTap">Tap anywhere to create a gradient.</div>
+			</div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="adjustTime">Swipe around to change date and time.</div><br>
+				<div class="fadeInBottomHide" id="adjustTimeText">XXX</div>
+			</div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="doubletapEnter">Tap and hold to adjust.</div><br>
+			</div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="adjustLatitude">Swipe around to adjust the latitudes.</div><br>
+				<div class="fadeInBottomHide" id="adjustLatitudeText">The latitudes are constrained from 65° to -65° because of polar night and day values.</div>
+			</div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="doubletapExit">After adjusting just hold again to reload.</div><br>
+			</div>
+			<div class="instructionwrapper">
+				<div class="instruction fadeInBottomHide" id="finished">There you go! Enjoy creating your visualisations.</div><br>
+			</div>
+		
+			<div class="skipwrapper">
+				<div class="progressbg button fadeInTopHide" id="skip">skip tutorial</div>
+			</div>
+	
+			<div class="menuwrapper"> 
+				<div class="button menuitem nohover fadeInSideHide coremenu" id="share"></div><br>
+					<!-- class extra ist das weiterführende menü - wie z.B. settings oder sowas -->
+				<div class="button menuitem nohover fadeInSideHide coremenu" id="menu"></div>
+			</div>
+	
+			<div class="menuwrapper left"> 
+				<div class="button menuitem nohover fadeInSideHideRight coremenuLeft progressbg" id="delete">
+					<div id="deleteText" class="deleteTextHidden">To delete the gradients just swipe—up up and away.</div>
+				</div>
+			</div>
+		
+			
+		</div>
+	</body>
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-41728625-3', 'auto');
+		ga('send', 'pageview');
+		
+	</script>
+</html>
