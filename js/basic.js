@@ -1595,6 +1595,10 @@ click(function(e){
 	})
 	
 	$("#readmore").click(function(event){
+		if(onceTouch){
+			setTimeout(function(){$(window).scrollTop( 0 );}, 150);
+		}
+		
 		$("#readmoreText").slideToggle(300, "easeInOutQuad");
 		$("body").toggleClass("scroll");
 
