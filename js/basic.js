@@ -1039,9 +1039,13 @@ $(document).ready(function(){
 						$("#finished").addClass("progress100");
 						$("#skip").addClass("fadeInUpHideBottom");
 						$("#adjustTimeText").addClass("backUpLittle");
+	
+						setTimeout(function(){
+							showMenu(true, false);
+						}, 1000)
+
 						setTimeout(function(){
 							$(".skipwrapper").hide();
-							//showMenu(true, false);
 							$("#finished").addClass("fadeInBottomHideUp");
 						}, 5000)
 					}, 200);
