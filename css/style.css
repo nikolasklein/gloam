@@ -39,7 +39,7 @@ html, body, div, a, span {
 }
 
 #editingNow{
-	display: block;
+	display: none;
 	position: absolute;
 	top: 0px;
 	margin: 1em;
@@ -161,6 +161,15 @@ p {
 	margin: 0px;
 	padding: 0px;
 	margin-bottom: 1.2rem;
+}
+
+.shareTextP{
+	overflow: visible;
+	margin-bottom: 1.2rem;
+}
+
+.shareTextP p{
+	margin-bottom: 0.3rem;
 }
 
 .layer {
@@ -482,7 +491,7 @@ p {
 
 .hoverbutton:hover {
 	cursor: pointer !important;
-	background-color: rgba(255,255,255,0.4) !important;	
+	background-color: rgba(255,255,255,0.3) !important;	
 	
 }
 
@@ -519,6 +528,18 @@ p {
 }
 .sharebutton:hover{
 	background-color: rgba(255,255,255,0.11);	
+}
+.socialShare{
+   -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: transparent;
+	background-repeat: no-repeat;
+	background-size: auto 65%;
+	background-position: center center;
 }
 
 .shareLink{
@@ -557,6 +578,19 @@ p {
 	bottom: -9999em;
 }
 
+#facebookshare{
+	background-image: url(../img/facebook.png);
+}
+
+#twittershare{
+	background-image: url(../img/twitter.png);
+}
+
+#googleshare{
+	background-image: url(../img/googleplus.png);
+	background-position: 54% 62%;
+}
+
 
 .menuitem{
 	padding: 0px;
@@ -576,7 +610,7 @@ p {
 
 
 .active{
-	background-color: rgba(255,255,255,0.4);	
+	background-color: rgba(255,255,255,0.3);	
 }
 
 #menu{

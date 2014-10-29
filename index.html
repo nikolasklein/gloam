@@ -39,7 +39,7 @@
 		</script>			
 	</head>
 	<body>
-		<div id="editingNow">developing right now — adding some usability and working on the press texts</div>
+		<div id="editingNow">developing right now — adding possibility to take a screenshot</div>
 		<div id="backgroundImage"></div>
 		<div id="fullscreenwrapper">
 			<div id="console"><span id="console_first">consol</span><br><span id="console_second"></span></div>
@@ -61,13 +61,14 @@
 					<h1 class="mainMenu fadeInBottomHideFar">gloam.io</h1>
 					<p  class="mainMenu fadeInBottomHideFar">
 						gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience. <a href="http://vimeo.com/nikolasklein/gloam" target="_blank" title="made with gloam.io">watch the video</a> <br>
-						<span class="betahide credit">handcrafted by <a href="http://www.nikolasklein.de">Nikolas Klein</a></span>
+						
+						<span class="betahide credit"> handcrafted by <a href="http://www.nikolasklein.de">Nikolas Klein</a></span>
 					</p>
 					<div id="readmoreText">
 						<h2>Where does it come from?</h2>
 						It started as a student project at the HfG Schwäbisch Gmuend. The task was to create something that visualizes programmed and repeated data. I found it interesting to work with sunrise and sunset times, because not only do they change over the course of a year, but they also change differently according to your location on earth.<br>
 						When I had submitted my project in July 2014, I decided to continue developing it and therefore created the interface and the touchversion.
-						<h2>Basic Functionality</h2>
+						<h2>Basic functionality</h2>
 						If you tap/click in gloam.io it triggers a series of events. gloam.io calculates the latitude depending on the y-position of your tap/click in relation to the whole window height. That latitude will be transferred to a PHP-Script to calculate the sunrise, sunset and twilight times. When these times come back from the server they are used to create a gradient according to the global date and time. gloam.io interpolates between sunrise, sunset and astronomically defined twilight times to create a smooth transition.
 						<h2>Colors</h2>
 						This was one of the hardest parts of my project. gloam.io interpolates on 4 different levels between 24 colors. So there are nearly 100 different color hues which are used to create this visualization. They were handpicked by watching a lot of sunrise/sunset time-lapses and then adjusted to the overall look and feel.
@@ -75,8 +76,8 @@
 						<h2>Who did this?</h2>
 						My name is <a href="http://www.nikolasklein.de" title="visit my website">Nikolas Klein</a> and im studying Interaction Design at the <a href="http://www.hfg-gmuend.de" title="HfG Schwäbisch Gmünd">HfG in Schwäbisch Gmünd</a>. I love what I'm doing! If you have any feedback or want to contact me—<a href="mailto:nikolas.klein@web.de?subject=Hi%20Niko!">feel free to do so!</a><br>
 						
-						<h2>presskit <span class="betahide"> / with high-res images and texts</span></h2>
-						<a href="presskit.zip" title="presskit with high res images … // 28MB" id="postcards"><img src="presskit.jpg" width="100%" height="auto"></a><br>
+						<h2>presskit <span class="betahide"> / with high-res images</span></h2>
+						<a href="presskit.zip" title="presskit with high-res images … // 28MB" id="postcards"><img src="presskit.jpg" width="100%" height="auto"></a><br>
 						<h2>set of postcards <span class="betahide"> / ready to print</span></h2>
 						<a href="postcards.pdf" title="download a set of postcards here …" id="postcards"><img src="postcards.jpg" alt="postcards" width="100%" height="auto"></a>
 
@@ -93,6 +94,7 @@
 						</ul>
 						<h2>#done <span class="betahide"> / <a href="https://github.com/nikolasklein/gloam.io" title="gloam.io on github" target="_blank">code on github</a></span></h2>
 						<ul class="nicetohave">
+							<li>adding capture button for screenshots (10-29-14)</li>
 							<li>not calling it beta anymore (10-27-14)</li>
 							<li>UX tweaking for mouse-input (10-27-14)</li>
 							<li>direct feedback while trying to delete (10-19-14)</li>						
@@ -113,18 +115,26 @@
 			<div class="cell vmiddle">
 				<div class="container" id="sharingText">
 					<h1 class="shareMenu fadeInTopHideFar">sharing<span class="betahide">/not quite ready</span></h1>
-					<p class="shareMenu fadeInTopHideFar">
-						Of course I want you to share your own beautiful visualisations—I'm working on that. <br>
-						In the meantime there is still the option to share gloam.io itself, if you like it. Or check it out on <a href="https://github.com/nikolasklein/gloam.io" title="gloam.io on github" target="_blank">github</a>.
-					</p>
+					<div class="shareMenu fadeInTopHideFar shareTextP">
+						<p>
+							Of course I want you to share your own beautiful visualisations—I'm working on that.
+						</p>
+						<p>
+							Clicking on capture will hide the GUI giving you the possibility to hold the moment with a screenshot.
+						</p>
+						<p>	
+							In the meantime there is still the option to share gloam.io itself, if you like it. Or check it out on <a href="https://github.com/nikolasklein/gloam.io" title="gloam.io on github" target="_blank">github</a>.
+						</p>
+					</div>
+					<div class="button shareMenu fadeInTopHideFar sharebutton" id="captureButton">capture</div>
 					<a target="_blank" class="shareLink" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gloam.io" title="share gloam.io on facebook">
-						<div class="button shareMenu fadeInTopHideFar sharebutton" id="facebookshare">facebook</div>
+						<div class="button shareMenu fadeInTopHideFar sharebutton socialShare" id="facebookshare">sh</div>
 					</a>
 					<a target="_blank" class="shareLink" href="https://twitter.com/share?text=&hashtags=dataviz,creativecoding,UX" title="tweet about gloam.io">
-						<div class="button shareMenu fadeInTopHideFar sharebutton" id="twittershare">twitter</div>
+						<div class="button shareMenu fadeInTopHideFar sharebutton socialShare" id="twittershare">sh</div>
 					</a>
 					<a target="_blank" class="shareLink" href="https://plus.google.com/share?url=http://www.gloam.io" title="share gloam.io on google+">
-						<div class="button shareMenu fadeInTopHideFar sharebutton" id="googleshare">google+</div>
+						<div class="button shareMenu fadeInTopHideFar sharebutton socialShare" id="googleshare">sh</div>
 					</a>
 				</div>
 			</div>

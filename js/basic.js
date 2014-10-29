@@ -893,6 +893,12 @@ $(document).ready(function(){
 			e.stopPropagation();
 		}
 	});
+
+	$("#sharingText").click(function(e){
+		if($("#sharelayer").hasClass("shown")){
+			e.stopPropagation();
+		}
+	});
 	
 	
 
@@ -912,6 +918,11 @@ $(document).ready(function(){
 			$("#share").click();
 		}
 	});
+	
+	$("#captureButton").click(function(){
+		hideGUI = true;
+		$("#share").click();
+	})
 	
 	
 	$("#secondlayer").on('mousedown', function (event){
@@ -1717,7 +1728,7 @@ click(function(e){
 				
 				$("#delete").removeClass("fadeInSideHideBackRight");
 				$("#delete").addClass("fadeInSideRight");			
-
+				
 				$("#menu").removeClass("active");
 				$("#menu, #share").addClass("nohover");
 				$("#thirdlayer").removeClass("shown");
@@ -1763,16 +1774,18 @@ click(function(e){
 	
 	
 	var fullShowTime = 200;
+	var hideGUI = false;
 		
 	$("#share").click(function(){
-
+		
 		$("#menu").removeClass("active");
 		if($("#readmore").hasClass("activeButton")){
 			$("#readmore").click();
 			setTimeout( function(){ShareClick()}, 100);
 		}else{
 			ShareClick();
-		}	
+		}
+		hideGUI = false;
 	});
 	
 	function ShareClick(){
@@ -1818,7 +1831,7 @@ click(function(e){
 				
 				$("body").addClass("noselect");	
 				
-				if(gradientArray.length>0){
+				if(gradientArray.length>0 && !hideGUI){
 					$("#timehandlerCircle").addClass("on");
 					resetTimeHandleTimeout(1000);	
 					$("#delete").removeClass("inactive");
@@ -1835,9 +1848,12 @@ click(function(e){
 					}, showTime * i);
 				});
 
-				$("#delete").removeClass("fadeInSideHideBackRight");
-				$("#delete").addClass("fadeInSideRight");			
-
+				if(hideGUI){
+					showMenu(true, true);	
+				}else{
+					$("#delete").removeClass("fadeInSideHideBackRight");
+					$("#delete").addClass("fadeInSideRight");								
+				}
 				
 				setTimeout(function(){
 					$("#thirdlayer").fadeOut(300, function(){
