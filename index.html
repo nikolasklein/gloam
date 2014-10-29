@@ -66,14 +66,14 @@
 					</p>
 					<div id="readmoreText">
 						<h2>Where does it come from?</h2>
-						It started as a student project at the HfG Schwäbisch Gmuend. The task was to create something that visualizes programmed and repeated data. I found it interesting to work with sunrise and sunset times, because not only do they change over the course of a year, but they also change differently according to your location on earth.<br>
+						It started as a student project at the HfG Schwäbisch Gmünd. The task was to create something that visualizes programmed and repeated data. I found it interesting to work with sunrise and sunset times, because not only do they change over the course of a year, but they also change differently according to your location on earth.<br>
 						When I had submitted my project in July 2014, I decided to continue developing it and therefore created the interface and the touchversion.
 						<h2>Basic functionality</h2>
 						If you tap/click in gloam.io it triggers a series of events. gloam.io calculates the latitude depending on the y-position of your tap/click in relation to the whole window height. That latitude will be transferred to a PHP-Script to calculate the sunrise, sunset and twilight times. When these times come back from the server they are used to create a gradient according to the global date and time. gloam.io interpolates between sunrise, sunset and astronomically defined twilight times to create a smooth transition.
 						<h2>Colors</h2>
 						This was one of the hardest parts of my project. gloam.io interpolates on 4 different levels between 24 colors. So there are nearly 100 different color hues which are used to create this visualization. They were handpicked by watching a lot of sunrise/sunset time-lapses and then adjusted to the overall look and feel.
 						<h2>Who did this?</h2>
-						My name is <a href="http://www.nikolasklein.de" title="visit my website">Nikolas Klein</a> and im studying Interaction Design at the <a href="http://www.hfg-gmuend.de" title="HfG Schwäbisch Gmünd">HfG in Schwäbisch Gmünd</a>. I love what I'm doing! If you have any feedback or want to contact me—<a href="mailto:nikolas.klein@web.de?subject=Hi%20Niko!">feel free to do so!</a><br>
+						My name is <a href="http://www.nikolasklein.de" title="visit my website">Nikolas Klein</a> and im studying Interaction Design at the <a href="http://www.hfg-Gmünd.de" title="HfG Schwäbisch Gmünd">HfG in Schwäbisch Gmünd</a>. I love what I'm doing! If you have any feedback or want to contact me—<a href="mailto:nikolas.klein@web.de?subject=Hi%20Niko!">feel free to do so!</a><br>
 						
 						<h2>presskit <span class="betahide"> / with high-res images</span></h2>
 						<a href="presskit.zip" title="presskit with high-res images … // 9MB" id="postcards"><img src="presskit.jpg" width="100%" height="auto" alt="presskit with high-res images … // 9MB"></a><br>
@@ -107,7 +107,7 @@
 						<p>
 							Thanks to everyone who helped me with my project. Thanks to all my friends at the HfG for enduring endless talks and being my hardest critics at the same time. Thanks to Frank and Torsten for helping me with print and photography. Thanks to my good friend Erik for translating and thanks to Prof. Jens Döring and Prof. Michael Götte for getting me started on this project and all the advice along my way. And thanks to <a href="http://www.sonnenaufgang-sonnenuntergang.de" target="_blank">Guido Gerding</a> for the astronomical input.
 						</p>
-							<span class="betahide credit">This work and the downloadable content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. </span>
+							<span class="betahide credit">This work and the downloadable content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. Google Analytics is used.</span>
 					</div>
 					<div class="button mainMenu fadeInBottomHideFar" id="readmore">read more …</div>
 					<div class="button mainMenu fadeInBottomHideFar" id="start">start</div>
@@ -183,14 +183,14 @@
 			
 		</div>
 	</body>
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-41728625-3', 'auto');
-		ga('send', 'pageview');
-		
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-41728625-5', 'auto');
+	  ga('send', 'pageview');
+	
 	</script>
 </html>
