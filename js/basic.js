@@ -887,6 +887,14 @@ $(document).ready(function(){
 	$("#readmoreText").click(function(e){
 		e.stopPropagation();
 	});
+	
+	$("#introductionText").click(function(e){
+		if(!$("#readmoreText").hasClass("readmoreShow")){
+			e.stopPropagation();
+		}
+	});
+	
+	
 
 	
 	$("#thirdlayer").click(function(){
@@ -1904,7 +1912,9 @@ click(function(e){
 					$("#delete").addClass("inactive");
 				}
 				
-				showMenu(true, false);
+				if(!latitudeOn){
+					showMenu(true, false);
+				}
 								
 				setTimeout(function(){
 					$("#adjustTimeText").addClass("backUpLittle");
