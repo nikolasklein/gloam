@@ -1656,7 +1656,6 @@ click(function(e){
 		
 		$("#share").removeClass("active");
 		$("#start").hide();
-		
 
 		
 		if($("#readmore").hasClass("activeButton")){
@@ -1664,12 +1663,7 @@ click(function(e){
 			setTimeout(function(){menuClick();}, 100);
 		}else{
 			menuClick();
-		}	
-
-
-		
-		
-			
+		}
 	});
 	
 	function menuClick(){
@@ -1767,9 +1761,11 @@ click(function(e){
 				$("#thirdlayer").addClass("shown");
 				$("#menu").addClass("active");
 
-				$("#sharelayer").css({"display":"none"});
+				setTimeout(function(){
+					$("#sharelayer").css({"display":"none"});
+				}, 100);
 				
-			}, 230);
+			}, 300);
 			
 		}
 	};
@@ -2028,15 +2024,33 @@ click(function(e){
 
 
 	//hier kommen die verschiedenen keys rein um gloam.io auch mit tastatur bedienen zu können…	
-	$("body").keyup(function(e){
-	    if(e.which == 27){
-		    
+	$("body").keyup($.debounce(500, true, function(e){
+	    if(e.which == 27){		    
 	        if(!$("#skip").hasClass("fadeInUpHideBottom") && $("#skip").hasClass("fadeInUp") && !$("#skip").hasClass("activeButton")){
 		        $("#skip").click();
-	        }
+	        }else if($("#readmore").hasClass("activeButton")){
+				$("#readmore").click();
+			}else if($("#sharelayer").hasClass("shown")){
+				$("#share").click();
+			}else if($("#thirdlayer").hasClass("shown")){
+				$("#menu").click();
+			}
+	    }else if(e.which  == 38){
+			if($("#thirdlayer").hasClass("shown")){
+				if($("#readmoreText").hasClass("readmoreShow")){
+					$("#readmore").click();
+				}else{
+					$("#share").click();
+				}
+			}    
+	    }else if(e.which  == 40){
+			if($("#sharelayer").hasClass("shown")){
+				$("#menu").click();
+			}else if($("#thirdlayer").hasClass("shown") && !$("#readmoreText").hasClass("readmoreShow")){
+				$("#readmore").click();
+			}      
 	    }
-
-	});
+	}));
 	
 
 	
