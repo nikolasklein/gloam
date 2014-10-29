@@ -2042,7 +2042,7 @@ click(function(e){
 				}else{
 					$("#share").click();
 				}
-			}    
+			}  
 	    }else if(e.which  == 40){
 			if($("#sharelayer").hasClass("shown")){
 				$("#menu").click();
