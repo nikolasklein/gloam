@@ -832,9 +832,7 @@ $(document).ready(function(){
 						$("#doubletapEnter").removeClass("progress100");
 					}						
 
-					if(gradientArray.length > 0 && $("#doubletapEnter").hasClass("checked")){
-						$("#skip").addClass("progress60");
-					}
+					
 				
 				
 			}else{
@@ -2107,8 +2105,7 @@ function enterLatitude(fromWhere_){
 		$("#timehandlerCircle").removeClass("on");	
 
 		showMenu(true, true);
-		
-		
+		$("#skip").addClass("progress60");
 
 				
 		var windowWidth = $(document).width();		
