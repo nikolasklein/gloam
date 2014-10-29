@@ -883,10 +883,19 @@ $(document).ready(function(){
 		}
 		
 	};
+
+	$("#readmoreText").click(function(e){
+		e.stopPropagation();
+	});
+
 	
 	$("#thirdlayer").click(function(){
-		if($(this).hasClass("shown")){
-			$("#menu").click();
+		if($("#readmoreText").hasClass("readmoreShow")){
+			$("#readmore").click();
+		}else{
+			if($(this).hasClass("shown")){
+				$("#menu").click();
+			}
 		}
 	});
 	
@@ -1041,7 +1050,9 @@ $(document).ready(function(){
 						$("#adjustTimeText").addClass("backUpLittle");
 	
 						setTimeout(function(){
-							showMenu(true, false);
+							if(!latitudeOn){
+								showMenu(true, false);
+							}
 						}, 1000)
 
 						setTimeout(function(){
@@ -1606,6 +1617,7 @@ click(function(e){
 		}
 		
 		$("#readmoreText").slideToggle(300, "easeInOutQuad");
+		$("#readmoreText").toggleClass("readmoreShow");
 		$("body").toggleClass("scroll");
 
 		$(this).toggleClass("activeButton");
