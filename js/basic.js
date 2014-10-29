@@ -920,8 +920,10 @@ $(document).ready(function(){
 	});
 	
 	$("#captureButton").click(function(){
-		hideGUI = true;
-		$("#share").click();
+		if(!$("#captureButtonWrap").hasClass("inactive")){
+			hideGUI = true;
+			$("#share").click();
+		}
 	})
 	
 	
@@ -1849,7 +1851,12 @@ click(function(e){
 				});
 
 				if(hideGUI){
-					showMenu(true, true);	
+					$("#delete").removeClass("fadeInSideHideBackRight");
+					$("#delete").addClass("fadeInSideRight");	
+					$("#delete").removeClass("inactive");
+					showMenu(true, true);
+					//how to hide the delete, but still show it again after latitudes or the time is somehow changed …
+
 				}else{
 					$("#delete").removeClass("fadeInSideHideBackRight");
 					$("#delete").addClass("fadeInSideRight");								
@@ -2379,7 +2386,7 @@ function deleteAll(fromWhereDelete){
 
 		
 
-		
+	 	$("#captureButtonWrap").addClass("inactive");
 	
 
 }
@@ -2433,6 +2440,7 @@ function createGradient(longitude, latitude, newday, left){
 
 	$("body").css({"text-align":"left"});
 	$("#delete").removeClass("inactive");
+	$("#captureButtonWrap").removeClass("inactive")
 
 	var newId = gradientArray.length;	
 	if(!left){

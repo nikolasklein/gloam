@@ -544,6 +544,7 @@ p {
 
 .shareLink{
 	text-decoration: none !important;
+	opacity: 1 !important;
 }
 
 .nohover{
@@ -663,6 +664,16 @@ p {
 	
 	width: 0px;
 	
+}
+
+#captureButtonWrap.inactive{
+	opacity: 0.2 !important;
+	cursor: default !important;
+}
+
+.inactive #captureButton{
+	cursor: default !important;
+	background-color: rgba(255,255,255,0) !important;	
 }
 
 
