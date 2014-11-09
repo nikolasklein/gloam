@@ -1048,13 +1048,9 @@ p {
 }
 
 
-@media all and (min-width: 0px) and (max-width: 400px) {
-  body {
-    font-size: 70% !important;
-  }
-}
 
-@media all and (min-width: 401px) and (max-width: 899px) {
+
+@media all and (min-width: 0px) and (max-width: 899px) {
   body {
     font-size: 85% !important;
   }
