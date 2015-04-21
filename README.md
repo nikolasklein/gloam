@@ -12,6 +12,8 @@ Since the code (which is basically located in one .js file) is a little bit mess
 
 ### Technological keypoints of gloam.io
 - Analyzing the sunrise/set/twilight phases and creating parameterized keyframes in rainbowvis.js
+  - describe the different phases and show the abstraction process + keyframes
+  - show how the keyframes are build into rainbowvis.js
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
   - AJAX-requests for every sunrise/set/twilight phase
   - PHP calculates on user given latitude
