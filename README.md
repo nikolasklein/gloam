@@ -38,23 +38,47 @@ I watched a lot of sunrise- and sunset timelapses to get a feeling for the color
 
 
 **abstraction process**
+
 ![alt text](http://nikolasklein.de/ideas/gloam/comparison.png "Abstraction of a frame")
 
 **keyframes**
+
 ![alt text](http://nikolasklein.de/ideas/gloam/twilight.png "Keyframes for: Night, Astronomical twilight, Nautical twilight, Civil twilight, Sunrise/Sunset and Day")
 
 top row: Night, Astronomical twilight, Nautical twilight
 
 bottom row: Civil twilight, Sunrise/Sunset and Day
 
-### Creating spectra in RainbowVis-JS
-I used [RainbowVis-JS](https://github.com/anomal/RainbowVis-JS) for an easy interpolation between this keyframes.
+
+> The keyframes consist of a four color gradient.
 
 
+### Creating spectra with RainbowVis-JS
+ Because every keyframe consists of a four color gradient, I can now seperate the colors and the positions of the two middle points of the gradient for every keyframe. I used [RainbowVis-JS](https://github.com/anomal/RainbowVis-JS) for an easy interpolation between the colors of the keyframes.
+
+**initialising the rainbows**
+```javascript
+  var night_am_top = new Rainbow();
+  var night_am_firstQuart = new Rainbow();
+  var night_am_secondQuart = new Rainbow();
+  var night_am_bottom = new Rainbow();
+```
 
 
+**setting the positions of the middle points**  
+```javascript
+  var night_am_firstQuartArr = [89, 57, 20, 42];
+  var night_am_secondQuartArr = [97, 81, 58, 73];
+```
 
 
+**setting the spectrum for the 4 gradient points**
+```javascript
+	night_am_top.setSpectrum("#050314", "#050314");
+	night_am_firstQuart.setSpectrum("#020109", "#020109", "#020109", "#0a071b");
+	night_am_secondQuart.setSpectrum("#02010a", "#05051e", "#060419", "#0b081d");
+	night_am_bottom.setSpectrum("#03031c", "#080829", "#080829", "#09092c");
+```
 
 
 
