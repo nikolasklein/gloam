@@ -40,7 +40,10 @@ I watched a lot of sunrise- and sunset timelapses to get a feeling for the color
 ![alt text](http://nikolasklein.de/ideas/gloam/twilight.png "Keyframes for: Night, Astronomical twilight, Nautical twilight, Civil twilight, Sunrise/Sunset and Day")
 
 top row: Night, Astronomical twilight, Nautical twilight
+
 bottom row: Civil twilight, Sunrise/Sunset and Day
+
+
 
 - Analyzing the sunrise/set/twilight phases and creating parameterized keyframes in rainbowvis.js
   - describe the different phases and show the abstraction process + keyframes
