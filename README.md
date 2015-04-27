@@ -12,19 +12,51 @@ Should work in every major browser and on a lot of smartphones. On iOS you have 
 [Watch the visualization video!](http://www.gloam.io)
 
 
-Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
 
-### Technological keypoints of gloam.io
+## Technological keypoints of gloam.io
 - Analyzing the sunrise phases and creating parameterized spectra with rainbowvis.js
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
 - Sorting the different times into one day
 - Connecting one day to the rainbowvis.js - spectra
 
+Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
 
-### Technological keypoints of gloam.io
+
+## Analyzing the twilight and creating parameterized spectra with rainbowvis.js
+
+### Abstracting the twilight subcategories
+Very important for visualizing a sunrise and sunset are the different twilight phases. 
+There are four different twilight subcategories.
+
+- Astronomical twilight
+- Nautical twilight
+- Civil twilight
+
+You can check the full information on [Wikipedia](http://en.wikipedia.org/wiki/Twilight).
+
+I watched a lot of sunrise- and sunset timelapses to get a feeling for the colorchanges. For every twilight subcategory I abstracted 3 different keyframes out of a frame.
+
+![alt text](http://nikolasklein.de/ideas/gloam/comparison.png "Abstraction of a frame")
+
+![alt text](http://nikolasklein.de/ideas/gloam/twilight_1.png "Night and Astronomical twilight")
+![alt text](http://nikolasklein.de/ideas/gloam/twilight_2.png "Nautical and Civil twilight")
+![alt text](http://nikolasklein.de/ideas/gloam/twilight_3.png "Sunrise/Sunset and Morning twilight")
+
+
 - Analyzing the sunrise/set/twilight phases and creating parameterized keyframes in rainbowvis.js
   - describe the different phases and show the abstraction process + keyframes
   - show how the keyframes are build into rainbowvis.js
+
+
+
+
+
+
+
+
+
+
+
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
   - AJAX-requests for every sunrise/set/twilight phase
   - PHP calculates on user given latitude
