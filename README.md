@@ -1,7 +1,6 @@
 gloam.io
 ==================
 
-> ##### This readme is a work in progress. I'm trying to describe the technological keypoints of gloam.io
 
 gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.
 
@@ -16,10 +15,9 @@ Should work in every major browser and on a lot of smartphones. On iOS you have 
 ## Technological keypoints of gloam.io
 - Analyzing the sunrise phases and creating parameterized spectra with RainbowVis-JS
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
-- Sorting the different times into one day
-- Connecting one day to the RainbowVis-JS - spectra
+- Connecting the one day sequence to the spectra
 
-Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
+Since the code (which is located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
 
 
 ## Analyzing the twilight and creating spectra with the help of RainbowVis-JS
@@ -106,16 +104,19 @@ The `$zenith`-variable is responsible for getting the values of the specific twi
 - The latitude is given by the user.
 - The zenith defines which times will be returned.
 
-For every phase this returns a *.csv file with 365 lines of the sunrise/sunset time for every day of the year.
+For every phase this returns a csv file with 365 lines of the sunrise/sunset time for every day of the year.
 
 [Get the sunrise and sunset times in a csv file for: 0N 0E ](http://gloam.io/api.php?client=5mQNicMv2c&longitude=0&latitude=0&zenith=90.933&year=2014&month=1&offsett=0&nodst=TRUE)
 
+Four of this csv files are used to calculate the day sequence and the duration for the sunrise, the sunset and for every twilight phase.
 
-- Sorting the different csv parts into one day
 
-- How these keypoints work together
-  - how the base of the day in rainbowvis.js is read out on a given date and time
-    - for every gradient simultaneously
+## Connecting the one day sequence to the spectra
+
+Based on the user given date and time gloam.io reads out the day sequence and checks in which phase it would be at that particular date and time. This is then used to specify which colors should be used in the gradient.
+
+
+————
 
 
 If you have any questions - feel free to contact me!
