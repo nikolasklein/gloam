@@ -37,6 +37,8 @@ You can check the full information on [Wikipedia](http://en.wikipedia.org/wiki/T
 I watched a lot of sunrise- and sunset timelapses to get a feeling for the colorchanges. For every twilight subcategory I abstracted 3 different keyframes out of a frame.
 
 ![alt text](http://nikolasklein.de/ideas/gloam/comparison.png "Abstraction of a frame")
+
+**keyframes:**
 ![alt text](http://nikolasklein.de/ideas/gloam/twilight.png "Keyframes for: Night, Astronomical twilight, Nautical twilight, Civil twilight, Sunrise/Sunset and Day")
 
 top row: Night, Astronomical twilight, Nautical twilight
