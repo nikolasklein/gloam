@@ -66,7 +66,7 @@ bottom row: Civil twilight, Sunrise/Sunset and Day
 ```
 
 
-**setting the positions of the middle points**  
+**setting the positions of the two middle points of a gradient**  
 ```javascript
   var night_am_firstQuartArr = [89, 57, 20, 42];
   var night_am_secondQuartArr = [97, 81, 58, 73];
@@ -83,15 +83,36 @@ bottom row: Civil twilight, Sunrise/Sunset and Day
 
 
 ## Getting the different sunrise/sunset- and twilight-times based on a user given latitude
-### The core of PHP Functions
+### The core of the PHP-script
+```php
+  […]
+  $sunrise=date_sunrise($ctime, SUNFUNCS_RET_TIMESTAMP, $latitude, $longitude, $zenith);
+  $sunset=date_sunset($ctime, SUNFUNCS_RET_TIMESTAMP, $latitude, $longitude, $zenith);
+  […]
+```
+Guido Gerding from [sonnenaufgang-sonnenuntergang.de](http://www.sonnenaufgang-sonnenuntergang.de/) gave me this script, which I adjusted a little bit to better fit my needs.
+
+The `$zenith`-variable is responsible for getting the values of the specific twilight time.
 
 
-### AJAX-requests for every sunrise/set/twilight phase
+### The AJAX-requests for the sunrise and twilight times
+```javascript
+	var urlRise = "api.php?client=5mQNicMv2c&longitude=0&latitude=" + latitude + "&zenith=90.83333333333&year=2014&month=1&offsett=0&nodst=TRUE";
+	var urlCivil = "api.php?client=5mQNicMv2c&longitude=0&latitude=" + latitude + "&zenith=96&year=2014&month=1&offsett=0&nodst=TRUE";
+	var urlNaut = "api.php?client=5mQNicMv2c&longitude=0&latitude=" + latitude + "&zenith=102&year=2014&month=1&offsett=0&nodst=TRUE";
+	var urlAstro = "api.php?client=5mQNicMv2c&longitude=0&latitude=" + latitude + "&zenith=108&year=2014&month=1&offsett=0&nodst=TRUE";
+```
+- The longitude stays the same. It does not affect the sunrise and sunset times very much.
+- The latitude is given by the user.
+- The zenith defines which times will be returned.
 
-  - AJAX-requests for every sunrise/set/twilight phase
-  - PHP calculates on user given latitude
-  - Returns a long .csv for every sunrise/set/twilight phase
+For every phase this returns a *.csv file with 365 lines of the sunrise/sunset time for every day of the year.
+
+[Get the sunrise and sunset times in a csv file for: 0N 0E ](http://gloam.io/api.php?client=5mQNicMv2c&longitude=0&latitude=0&zenith=90.933&year=2014&month=1&offsett=0&nodst=TRUE)
+
+
 - Sorting the different csv parts into one day
+
 - How these keypoints work together
   - how the base of the day in rainbowvis.js is read out on a given date and time
     - for every gradient simultaneously
