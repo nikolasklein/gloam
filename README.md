@@ -43,8 +43,7 @@ I watched a lot of sunrise- and sunset timelapses to get a feeling for the color
 **keyframes**
 ![alt text](http://nikolasklein.de/ideas/gloam/twilight.png "Keyframes for: Night, Astronomical twilight, Nautical twilight, Civil twilight, Sunrise/Sunset and Day")
 
-top row: Night, Astronomical twilight, Nautical twilight
-bottom row: Civil twilight, Sunrise/Sunset and Day
+top row: Night, Astronomical twilight, Nautical twilightbottom row: Civil twilight, Sunrise/Sunset and Day
 
 
 
