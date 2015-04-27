@@ -3,11 +3,22 @@ gloam.io
 
 > ##### This readme is a work in progress. I'm trying to describe the technological keypoints of gloam.io
 
-gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience. [Try it out!](http://www.gloam.io)
+gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.
+
+[Try it out online!](http://www.gloam.io)
 
 Should work in every major browser and on a lot of smartphones. On iOS you have the best experience but Google Chrome renders the best.
 
+[Watch the visualization video!](http://www.gloam.io)
+
+
 Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
+
+### Technological keypoints of gloam.io
+- Analyzing the sunrise phases and creating parameterized spectra with rainbowvis.js
+- Getting the different sunrise/sunset- and twilight-times based on a user given latitude
+- Sorting the different times into one day
+- Connecting one day to the rainbowvis.js - spectra
 
 
 ### Technological keypoints of gloam.io
