@@ -116,7 +116,7 @@ Four of this csv files are used to calculate the day sequence and the duration f
 Based on the user given date and time gloam.io reads out the day sequence and checks in which phase it would be at that particular date and time. This is then used to specify which colors should be used in the gradient.
 
 
-————
+---
 
 
 If you have any questions - feel free to contact me!
