@@ -38,10 +38,6 @@ I watched a lot of sunrise- and sunset timelapses to get a feeling for the color
 
 ![alt text](http://nikolasklein.de/ideas/gloam/comparison.png "Abstraction of a frame")
 
-![alt text](http://nikolasklein.de/ideas/gloam/twilight_1.png "Night and Astronomical twilight")
-![alt text](http://nikolasklein.de/ideas/gloam/twilight_2.png "Nautical and Civil twilight")
-![alt text](http://nikolasklein.de/ideas/gloam/twilight_3.png "Sunrise/Sunset and Morning twilight")
-
 
 - Analyzing the sunrise/set/twilight phases and creating parameterized keyframes in rainbowvis.js
   - describe the different phases and show the abstraction process + keyframes
