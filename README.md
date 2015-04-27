@@ -22,7 +22,7 @@ Should work in every major browser and on a lot of smartphones. On iOS you have 
 Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
 
 
-## Analyzing the twilight and creating spectra with RainbowVis-JS
+## Analyzing the twilight and creating spectra with the help of RainbowVis-JS
 
 ### Abstracting the twilight subcategories
 Very important for visualizing a sunrise and sunset are the different twilight phases. 
@@ -50,7 +50,8 @@ top row: Night, Astronomical twilight, Nautical twilight
 bottom row: Civil twilight, Sunrise/Sunset and Day
 
 
-> The keyframes consist of a four color gradient.
+#### Every keyframe consist of a four color gradient.
+
 
 
 ### Creating spectra with RainbowVis-JS
@@ -74,17 +75,19 @@ bottom row: Civil twilight, Sunrise/Sunset and Day
 
 **setting the spectrum for the 4 gradient points**
 ```javascript
-	night_am_top.setSpectrum("#050314", "#050314");
+	night_am_top.setSpectrum("#050314", "#050314", "#050314", "#050314");
 	night_am_firstQuart.setSpectrum("#020109", "#020109", "#020109", "#0a071b");
 	night_am_secondQuart.setSpectrum("#02010a", "#05051e", "#060419", "#0b081d");
 	night_am_bottom.setSpectrum("#03031c", "#080829", "#080829", "#09092c");
 ```
 
 
+## Getting the different sunrise/sunset- and twilight-times based on a user given latitude
+### The core of PHP Functions
 
 
+### AJAX-requests for every sunrise/set/twilight phase
 
-- Getting the different sunrise/sunset- and twilight-times based on a user given latitude
   - AJAX-requests for every sunrise/set/twilight phase
   - PHP calculates on user given latitude
   - Returns a long .csv for every sunrise/set/twilight phase
@@ -92,7 +95,7 @@ bottom row: Civil twilight, Sunrise/Sunset and Day
 - How these keypoints work together
   - how the base of the day in rainbowvis.js is read out on a given date and time
     - for every gradient simultaneously
-- Which libraries used and why
+
 
 If you have any questions - feel free to contact me!
 
