@@ -14,15 +14,15 @@ Should work in every major browser and on a lot of smartphones. On iOS you have 
 
 
 ## Technological keypoints of gloam.io
-- Analyzing the sunrise phases and creating parameterized spectra with rainbowvis.js
+- Analyzing the sunrise phases and creating parameterized spectra with RainbowVis-JS
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
 - Sorting the different times into one day
-- Connecting one day to the rainbowvis.js - spectra
+- Connecting one day to the RainbowVis-JS - spectra
 
 Since the code (which is basically located in one .js file) is a little bit messy—sorry for that—I'm trying to describe the technological keypoints which make the whole thing come to life.
 
 
-## Analyzing the twilight and creating parameterized spectra with rainbowvis.js
+## Analyzing the twilight and creating spectra with RainbowVis-JS
 
 ### Abstracting the twilight subcategories
 Very important for visualizing a sunrise and sunset are the different twilight phases. 
@@ -43,13 +43,12 @@ I watched a lot of sunrise- and sunset timelapses to get a feeling for the color
 **keyframes**
 ![alt text](http://nikolasklein.de/ideas/gloam/twilight.png "Keyframes for: Night, Astronomical twilight, Nautical twilight, Civil twilight, Sunrise/Sunset and Day")
 
-top row: Night, Astronomical twilight, Nautical twilightbottom row: Civil twilight, Sunrise/Sunset and Day
+top row: Night, Astronomical twilight, Nautical twilight
 
+bottom row: Civil twilight, Sunrise/Sunset and Day
 
-
-- Analyzing the sunrise/set/twilight phases and creating parameterized keyframes in rainbowvis.js
-  - describe the different phases and show the abstraction process + keyframes
-  - show how the keyframes are build into rainbowvis.js
+### Creating spectra in RainbowVis-JS
+I used [RainbowVis-JS](https://github.com/anomal/RainbowVis-JS) for an easy interpolation between this keyframes.
 
 
 
