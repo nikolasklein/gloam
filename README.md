@@ -4,7 +4,7 @@ gloam.io
 
 gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.
 
-[Try it out online!](http://www.gloam.io)
+[Try it out online!](http://www.nikolasklein.de/gloam)
 
 Should work in every major browser and on a lot of smartphones. On iOS you have the best experience but Google Chrome renders the best.
 
