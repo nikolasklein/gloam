@@ -52,11 +52,16 @@ var latitudeNorth = 65;
 var latitudeSouth = -65;
 
 
-
+var leapScreenX, leapScreenY, windowWidth, windowHeight;
+var useLeap = false;;
 
 
 $(window).load(function(){
+    
 
+    
+    
+    
 	WebFont.load({
 		custom: {
 		  families: ['Fira']
@@ -347,7 +352,63 @@ var changedToMouse = false;
 var changedBack = false;
 
 $(document).ready(function(){
-	
+	init();
+    
+    
+    windowWidth = $(window).width();
+    windowHeight = $(window).height();
+    
+    var leapPressed = false;
+    
+    function init(){
+
+        controller = new Leap.Controller();
+        
+        Leap.loop({
+            hand: function(hand){
+                useLeap = true;
+                touching = false;
+                mouseDown = false;
+                moved = true;
+
+                // entering and exiting latitudeAdjustmentMode
+                
+                if(hand.grabStrength >= 0.7 && !leapPressed){
+                    enterLatitude();
+                    console.log("enterLeap");
+                    leapPressed = true;
+                }
+                
+                if(hand.grabStrength < 0.7 && leapPressed){
+                    exitLatitudeLeap();
+                    console.log("exitLeap");
+                    leapPressed = false;
+                }
+
+                console.log(hand.palmPosition)
+
+                leapScreenX = Math.max(Math.min(map(hand.palmPosition[0], -110, 140, 0, windowWidth), windowWidth), 0);
+                leapScreenY = Math.max(Math.min(map(hand.palmPosition[1], 60, 260, windowHeight, 0), windowHeight), 0);
+                
+                console.log(leapScreenX + " // " + leapScreenY);
+
+                if(latitudeEntered){
+                    secondMove(event);
+                }else{
+                    lockTimehandler()
+                    groundMove(event);
+                }
+
+/*
+                console.log("blahand;");
+                  console.log(hand.grabStrength.toPrecision(2));
+                  console.log(hand.grabStrength * 100 + '%');
+*/
+              }
+          });
+    }
+    
+    
 	setTimeout(function(){$("#backgroundImage").addClass("show")}, 300);
 	
 	$(window).mouseup(function(){
@@ -457,12 +518,9 @@ $(document).ready(function(){
 	});
 	
 	$("#groundlayer").on('mousemove', function (event){
-        console.log("moving");
-        mouseDown = true;
-        groundDown = true;
-        groundMove(event);
 		if(mouseDown && groundDown && !onceTouch){
-		//	groundMove(event);
+            useLeap = false;
+            groundMove(event);
 		}
 	});
 	
@@ -527,13 +585,15 @@ $(document).ready(function(){
 		
 		startTime = new Date().getTime();
 	
-		var e = event.originalEvent;
+
 		
 
 		if(touching){
+    		var e = event.originalEvent;
 			touchstartX = e.touches[0].pageX;	
 			touchstartY = e.touches[0].pageY;
 		}else if(mouseDown){
+            var e = event.originalEvent;
 			touchstartX = e.clientX;
 			touchstartY = e.clientY;
 		}
@@ -617,16 +677,24 @@ $(document).ready(function(){
 
 			
 		
-		var e = event.originalEvent;
+
 		
 	
-		if (!$('.scrollable').has($(event.target)).length) event.preventDefault();
+		
 		//$("#console").html(event.originalEvent.touches[0].pageX + " // " + event.originalEvent.touches[0].pageY);
 	
-		if(touching){
+		if(useLeap){
+        	mouseX_ = leapScreenX;
+			mouseY_ = leapScreenY;
+			console.log("usingLeap");
+        }else if(touching){
+            var e = event.originalEvent;
+        	if (!$('.scrollable').has($(event.target)).length) event.preventDefault();
 			mouseX_ = e.touches[0].pageX;	
 			mouseY_ = e.touches[0].pageY;
 		}else if(mouseDown){
+    		var e = event.originalEvent;	
+            if (!$('.scrollable').has($(event.target)).length) event.preventDefault();
 			mouseX_ = e.clientX;
 			mouseY_ = e.clientY;
 		}
@@ -712,8 +780,8 @@ $(document).ready(function(){
 
 		
 		//the actual new calculation of the new date and time
-		if($("#timehandler").hasClass("locked") && !tapStreak){
-				
+		if($("#timehandler").hasClass("locked") && !tapStreak || useLeap){
+				console.log("adjustingdateandtime");
 				clock = Math.min(Math.max(Math.floor(map(mouseY_, 0, wholeheight, 0, wholeminutes)), 0), 1440); // chooser für die uhrzeit
 				day = Math.min(Math.max(Math.floor(map(mouseX_, 0, wholewidth, 1, 365)), 0), 365); // chooser für den jahrestag
 				
@@ -955,10 +1023,9 @@ $(document).ready(function(){
 	});
 	
 	$("#secondlayer").on('mousemove', function (event){
-        mouseDown = true;
-        secondMove(event);
 		if(mouseDown && !onceTouch){
-	//		secondMove(event);
+    		useLeap = false;
+    		secondMove(event);
 		}
 	});
 	
@@ -1082,7 +1149,7 @@ $(document).ready(function(){
 	function secondMove( event ) {
         console.log("movingAndAdjustingLayers");
 		
-		var e = event.originalEvent;
+
 			
 		wholewidth = $(document).width();
 		wholeheight = $(document).height();
@@ -1094,10 +1161,15 @@ $(document).ready(function(){
 		
 
 	
-		if(touching){
+		if(useLeap){
+        	mouseX_ = leapScreenX;
+			mouseY_ = leapScreenY;
+        }else if(touching){
+    		var e = event.originalEvent;
 			mouseX_ = e.touches[0].pageX;	
 			mouseY_ = e.touches[0].pageY;
 		}else if(mouseDown){
+            var e = event.originalEvent;
 			mouseX_ = e.clientX;
 			mouseY_ = e.clientY;
 		}
@@ -2037,7 +2109,7 @@ function hideShowDelete(){
 };
 
 function enterLatitude(fromWhere_){
-        console.log("enterLatitude");
+        latitudeEntered = true;
 		
 		var numberOfItems = gradientArray.length;
 
@@ -2099,10 +2171,10 @@ function enterLatitude(fromWhere_){
 	latitudeOn = true;
 }
 
+var latitudeEntered = false;
+
 
 function exitLatitude(fromWhere_){
-
-
 
 		var numberOfItems = gradientArray.length;
 
@@ -4176,7 +4248,8 @@ function getAverage(thisArray) {
 		}
 		if(true){
 			exitLatitude(mouseX_);
-            console.log("wentOut");
+            latitudeEntered = false;
+            
 			$("#secondlayer").removeClass("grabbing");
 			exiting = true;
 		 	$("#detailLatitude").addClass("detailShowFastHide");
