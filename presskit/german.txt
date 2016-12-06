@@ -1,0 +1,23 @@
+gloam.io – Eine interaktive Datenvisualisierung
+
+https://vimeo.com/109607816
+
+gloam.io ist eine interaktive Datenvisualisierung, die abhängig von eingegebenen Breitengraden die Sonnenauf- und Untergangszeiten berechnet und diese abhängig von einem globalen Zeitpunkt darstellt.
+
+Die Arbeit an gloam.io begann während des zweiten Semesters im Kurs Programmiertes Entwerfen. Zielsetzung dieses Kurses war es vorprogrammierte Daten zu visualisieren.
+
+Ich entschied mich für Sonnenauf- und Untergangszeiten, da sich diese Zeiten nicht nur über das Jahr verändern – vielmehr sind sie auch von der Lage auf der Weltkugel abhängig.
+
+Es werden nicht nur die Auf- und Untergangszeiten berechnet, sondern zugleich auch noch 3 verschiedene Dämmerungszeitpunkte, die einen flüssigen und harmonischen Tagesablauf erlauben.
+
+Daraus entstanden ist eine interaktive Datenvisualisierung, die unter gloam.io für alle zugänglich ist. Das Video zeigt den Ablauf der Visualisierung in einem musikalischen Kontext, und auf den Fotos erkennt man, dass die Visualisierungen auch im  klein- und großformatigen Druck eine ästhetische Qualität besitzen.
+
+Bei der Umsetzung wurde viel Wert auf die Details der Interaktion gelegt. gloam.io funktioniert auf verschiedenen Plattformen und Endgeräten und lässt sich mit der Maus ebenso einfach bedienen wie auf einem Touchscreen.
+
+
+Vielen Dank an Prof. Jens Döring und Prof. Michael Götte für die Betreuung und alle anderen die zum Gelingen dieser Arbeit beigetragen haben. Und natürlich vielen Dank an meine Freunde, die mich sehr intensiv unterstützt haben.
+
+
+Nikolas Klein 
+@nikolasklein
+nikolasklein.de
