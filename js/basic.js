@@ -1572,6 +1572,10 @@ click(function(e){
 	
 	$("#start").click(function(event){
     	$("#skip").click();
+        for (i = 0; i < 7; i++) { 
+            lati -= 10;
+            tapCreate();
+        }
 		$("body").addClass("noselect");	
 		if($("#readmore").hasClass("activeButton")){
 			$("#readmore").click();
@@ -1948,49 +1952,6 @@ click(function(e){
 		updateTimeDrag();
 	}));
 	
-	function tapCreate(){
-
-			if(!$("#instructionTap").hasClass("progress33")){
-				$("#instructionTap").addClass("progress33");
-			}else if($("#instructionTap").hasClass("progress33") && !$("#instructionTap").hasClass("progress66")){
-				$("#instructionTap").addClass("progress66");
-			}else if($("#instructionTap").hasClass("progress66")){
-				$("#instructionTap").addClass("checked");
-				setTimeout(function(){
-					$("#instructionTap").addClass("fadeInBottomHideUp");
-					setTimeout(function(){
-						$("#adjustTime").addClass("fadeInBottom");
-						$("#skip").addClass("progress20");
-						setTimeout(function(){
-							$("#adjustTimeText").addClass("fadeInBottom");
-							$("#timehandlerCircle").addClass("on");
-							resetTimeHandleTimeout(2000);
-						}, 100); 
-					}, 200)
-				}, 280);
-			}
-
-			resetTimeHandleTimeout(1000);
-
-			if(!latitudeOn && !dragDelete && !dragLatitudeOverlay && !dragTimeAdjust){
-				
-				var left = false;
-				var windowWidth = $(document).width();		
-				var halfWindow = windowWidth/2;
-				
-				if(mouseX_>halfWindow || gradientArray.length == 0){
-					left=false;
-				}else{
-				//	left=true; // anschalten um auch rechts hinzuzfügen…
-				}
-							
-				createGradient(longi, lati, day, left);
-			}else{
-				//alert("check");
-				//deleteGradient();
-			}
-			
-		};
 		//### swipe ausgestellt - über click machen da das hier die mausversion ist.
 	
 	function tapAdjust(){
@@ -4257,3 +4218,49 @@ function getAverage(thisArray) {
 			}, 80)
 		}
 	}
+	
+	
+	
+	function tapCreate(){
+
+			if(!$("#instructionTap").hasClass("progress33")){
+				$("#instructionTap").addClass("progress33");
+			}else if($("#instructionTap").hasClass("progress33") && !$("#instructionTap").hasClass("progress66")){
+				$("#instructionTap").addClass("progress66");
+			}else if($("#instructionTap").hasClass("progress66")){
+				$("#instructionTap").addClass("checked");
+				setTimeout(function(){
+					$("#instructionTap").addClass("fadeInBottomHideUp");
+					setTimeout(function(){
+						$("#adjustTime").addClass("fadeInBottom");
+						$("#skip").addClass("progress20");
+						setTimeout(function(){
+							$("#adjustTimeText").addClass("fadeInBottom");
+							$("#timehandlerCircle").addClass("on");
+							resetTimeHandleTimeout(2000);
+						}, 100); 
+					}, 200)
+				}, 280);
+			}
+
+			resetTimeHandleTimeout(1000);
+
+			if(!latitudeOn && !dragDelete && !dragLatitudeOverlay && !dragTimeAdjust){
+				
+				var left = false;
+				var windowWidth = $(document).width();		
+				var halfWindow = windowWidth/2;
+				
+				if(mouseX_>halfWindow || gradientArray.length == 0){
+					left=false;
+				}else{
+				//	left=true; // anschalten um auch rechts hinzuzfügen…
+				}
+							
+				createGradient(longi, lati, day, left);
+			}else{
+				//alert("check");
+				//deleteGradient();
+			}
+			
+		};
