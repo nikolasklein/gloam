@@ -366,6 +366,21 @@ $(document).ready(function(){
        }
 	   $("#secondlayer").removeClass("grabbing");
     });
+    var holdingSpace = false;
+    $(window).keydown(function(event){
+        if(event.keyCode == 32 && !holdingSpace){
+            enterLatitude();
+            holdingSpace = true;
+        }
+    })
+    
+    $(window).keyup(function(event){
+        if(event.keyCode == 32 && holdingSpace){
+            exitLatitudeLeap();
+            holdingSpace = false;
+        }
+    })
+
 	
 	writeDate();
 	
@@ -442,8 +457,12 @@ $(document).ready(function(){
 	});
 	
 	$("#groundlayer").on('mousemove', function (event){
+        console.log("moving");
+        mouseDown = true;
+        groundDown = true;
+        groundMove(event);
 		if(mouseDown && groundDown && !onceTouch){
-			groundMove(event);
+		//	groundMove(event);
 		}
 	});
 	
@@ -481,6 +500,7 @@ $(document).ready(function(){
 	/* $("#groundlayer").on('touchstart',  */
 	
 	function groundStart(event) {
+    	console.log("downOnHome");
 		prevPosSet = false;
 		
 		$(".skipwrapper").addClass("putBack");
@@ -646,14 +666,14 @@ $(document).ready(function(){
 			if($("#skip").hasClass("fadeInUpHideBottom") && !hideMenu && gradientArray.length>0){
 				showMenu(true, true);
 				hideMenu = true;
-				console.log(avgSpeed);				
+				//console.log(avgSpeed);				
 			}	
 		}
 
 		if($("#finished").hasClass("fadeInBottomHideUp") && gradientArray.length > 0){
-			console.log(avgSpeed);
+			//console.log(avgSpeed);
 			if(avgSpeed<30){
-				console.log("herher");
+				//console.log("herher");
 				$("#adjustTimeText").removeClass("fadeInBottomHideUp");
 			}
 		}
@@ -935,8 +955,10 @@ $(document).ready(function(){
 	});
 	
 	$("#secondlayer").on('mousemove', function (event){
+        mouseDown = true;
+        secondMove(event);
 		if(mouseDown && !onceTouch){
-			secondMove(event);
+	//		secondMove(event);
 		}
 	});
 	
@@ -973,7 +995,8 @@ $(document).ready(function(){
 		event.stopPropagation();
 	});
 
-	var touchCheck;
+	
+
 	
 	function secondStart(event) {
 		$(".skipwrapper").addClass("putBack");	
@@ -1035,52 +1058,7 @@ $(document).ready(function(){
 		
 				
 		longTimeout = setTimeout(function(){
-			var checkNumber = 1;
-			if(touchCheck){
-				checkNumber = e.touches.length;
-			}
-			if(!moved && checkNumber >! 1 && $("#adjustLatitude").hasClass("checked")){
-				exitLatitude(mouseX_);
-				$("#secondlayer").removeClass("grabbing");
-				exiting = true;
-			 	$("#detailLatitude").addClass("detailShowFastHide");
-				$(".detailAdjustingShow").removeClass("detailAdjustingShow");
-
-				var hideDetail = $(".latitudeDetailNumber").get();
-				var hideDetailTime = 300/hideDetail.length;			
-
-				$.each(hideDetail, function(i, item){
-					setTimeout(function() {
-						$(item).removeClass("detailShow");
-						$(item).addClass("detailShowFastHide");
-					}, hideDetail * i);
-				});
-				
-				$("#doubletapExit").addClass("checked");
-				$("#skip").addClass("progress100");
-				
-				setTimeout(function(){
-					$("#doubletapExit").addClass("fadeInBottomHideUp");
-
-					setTimeout(function(){
-						$("#finished").addClass("fadeInBottom");
-						$("#finished").addClass("progress100");
-						$("#skip").addClass("fadeInUpHideBottom");
-						$("#adjustTimeText").addClass("backUpLittle");
-	
-						setTimeout(function(){
-							if(!latitudeOn){
-								showMenu(true, false);
-							}
-						}, 1000)
-
-						setTimeout(function(){
-							$(".skipwrapper").hide();
-							$("#finished").addClass("fadeInBottomHideUp");
-						}, 5000)
-					}, 200);
-				}, 80)
-			}
+                exitLatitudeLeap();
 		}, 280);
 		
 		longTimeoutSet = true;		
@@ -1102,7 +1080,7 @@ $(document).ready(function(){
 	};
 
 	function secondMove( event ) {
-
+        console.log("movingAndAdjustingLayers");
 		
 		var e = event.originalEvent;
 			
@@ -1593,6 +1571,7 @@ click(function(e){
 	};
 	
 	$("#start").click(function(event){
+    	$("#skip").click();
 		$("body").addClass("noselect");	
 		if($("#readmore").hasClass("activeButton")){
 			$("#readmore").click();
@@ -2069,7 +2048,7 @@ function hideShowDelete(){
 			var menuitems = $("#share, #menu").get();
 
 			$.each(menuitems, function(i, item) {
-				//console.log(i);
+				////console.log(i);
 				setTimeout(function() {
 					$(item).addClass("fadeInSideHideBack");
 					$(item).removeClass("fadeInSide");
@@ -2085,7 +2064,7 @@ function hideShowDelete(){
 			var menuitems = $("#share, #menu").get().reverse();
 
 			$.each(menuitems, function(i, item) {
-				//console.log(i);
+				////console.log(i);
 				setTimeout(function() {
 					$(item).addClass("fadeInSide");
 					$(item).removeClass("fadeInSideHideBack");
@@ -2097,7 +2076,7 @@ function hideShowDelete(){
 };
 
 function enterLatitude(fromWhere_){
-
+        console.log("enterLatitude");
 		
 		var numberOfItems = gradientArray.length;
 
@@ -2128,7 +2107,7 @@ function enterLatitude(fromWhere_){
 
 		
 		$.each(divs, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			setTimeout(function() {
 				$(item).addClass("show");
 				$(item).prev().addClass("hide_bg");	
@@ -2139,7 +2118,7 @@ function enterLatitude(fromWhere_){
 		var delayTime_ = 200 / divs_.length;
 		
 		$.each(divs_, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			setTimeout(function() {
 				$(item).addClass("show");
 				$(item).prev().addClass("hide_bg");	
@@ -2198,7 +2177,7 @@ function exitLatitude(fromWhere_){
 
 		
 		$.each(divs, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			var addon = 0;
 			if(divs.length == 1){
 				addon = 0.65;
@@ -2215,7 +2194,7 @@ function exitLatitude(fromWhere_){
 		var delayTime_ = 200 / divs_.length;
 
 		$.each(divs_, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			var addon = 0;
 			if(divs_.length == 1){
 				addon = 0.65;
@@ -2341,7 +2320,7 @@ function deleteAll(fromWhereDelete){
 		var extraTime = 0;
 
 		$.each(divs, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			if(divs.length == 1 && i == 0){
 				extraTime = 1.2;
 			}else{
@@ -2577,7 +2556,7 @@ function createGradient(longitude, latitude, newday, left){
 						break;
 				}
 
-				//console.log("fail")
+				////console.log("fail")
 			};
 		}
 	};
@@ -2740,39 +2719,39 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 		var gradientCount = 4;
 		
 		if(arrA.results[newday][0] == " " && arrA.results[newday][1] == " "){
-			//console.log("NoAstro");
+			////console.log("NoAstro");
 			gradientArray[id].Astro = false;
 			gradientCount--;
 		}else{
 			gradientArray[id].Astro = true;		
-			//console.log("Astro");			
+			////console.log("Astro");			
 		}
 		
 		if(arrN.results[newday][0] == " " && arrN.results[newday][1] == " "){
-			//console.log("NoNaut");
+			////console.log("NoNaut");
 			gradientArray[id].Naut = false;
 			gradientCount--;
 		}else{
 			gradientArray[id].Naut = true;
-			//console.log("Naut");			
+			////console.log("Naut");			
 		}
 		
 		if(arrB.results[newday][0] == " " && arrB.results[newday][1] == " "){
-			//console.log("NoBuerg");			
+			////console.log("NoBuerg");			
 			gradientArray[id].Buerg = false;
 			gradientCount--;
 		}else{
 			gradientArray[id].Buerg = true;
-			//console.log("Buerg");			
+			////console.log("Buerg");			
 		}
 		
 		if(arrO.results[newday][0] == " " && arrO.results[newday][1] == " "){
-			//console.log("NoOff");			
+			////console.log("NoOff");			
 			gradientArray[id].Off = false;
 			gradientCount--;			
 		}else{
 			gradientArray[id].Off = true;
-			//console.log("Off");			
+			////console.log("Off");			
 		}
 
 
@@ -2792,7 +2771,7 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 
 		switch(gradientCount){
 			case 4:
-				//console.log("4");
+				////console.log("4");
 					point1 = sunriseAstro;
 					point_1 = sunsetAstro;
 					
@@ -2862,7 +2841,7 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 						// easy to establish a second gradient for the later newday - just change it here and where you select it.
 						//easy to use different gradients for differnt cases… just declare them at the top and write them into one of the cases…
 			case 3:
-				//console.log("3");
+				////console.log("3");
 				if(!gradientArray[id].Astro){
 					point1 = sunriseNaut;
 					point_1 = sunsetNaut;
@@ -2970,7 +2949,7 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 				break;
 				
 			case 2:
-				//console.log("2");
+				////console.log("2");
 
 				if(gradientArray[id].Buerg && gradientArray[id].Off){
 					point1 = sunriseBuerg;
@@ -3098,7 +3077,7 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 				break;
 				
 			case 1:
-				//console.log("1");
+				////console.log("1");
 				
 				if(gradientArray[id].Off){
 					point1 = sunriseOff;
@@ -3220,7 +3199,7 @@ function drawBg(arrO, arrB, arrN, arrA, id){
 				break;
 				
 			case 0:
-				//console.log("0");
+				////console.log("0");
 				gradientArray[id].Astro = false;
 				gradientArray[id].Naut = false;
 				gradientArray[id].Buerg = false;
@@ -4171,7 +4150,7 @@ function showMenu(coremenu, hiding){
 		menuitems.reverse();
 
 		$.each(menuitems, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			setTimeout(function() {
 				$(item).addClass("fadeInSide");
 				$(item).removeClass("fadeInSideHideBack");
@@ -4187,7 +4166,7 @@ function showMenu(coremenu, hiding){
 		}
 		
 		$.each(menuitems, function(i, item) {
-			//console.log(i);
+			////console.log(i);
 			setTimeout(function() {
 				$(item).addClass("fadeInSideHideBack");
 				$(item).removeClass("fadeInSide");
@@ -4224,6 +4203,57 @@ function getAverage(thisArray) {
 
 
 
+    var touchCheck;
+	
 
 
+	function exitLatitudeLeap(){
 
+		var checkNumber = 1;
+		if(touchCheck){
+			checkNumber = e.touches.length;
+		}
+		if(true){
+			exitLatitude(mouseX_);
+            console.log("wentOut");
+			$("#secondlayer").removeClass("grabbing");
+			exiting = true;
+		 	$("#detailLatitude").addClass("detailShowFastHide");
+			$(".detailAdjustingShow").removeClass("detailAdjustingShow");
+
+			var hideDetail = $(".latitudeDetailNumber").get();
+			var hideDetailTime = 300/hideDetail.length;			
+
+			$.each(hideDetail, function(i, item){
+				setTimeout(function() {
+					$(item).removeClass("detailShow");
+					$(item).addClass("detailShowFastHide");
+				}, hideDetail * i);
+			});
+			
+			$("#doubletapExit").addClass("checked");
+			$("#skip").addClass("progress100");
+			
+			setTimeout(function(){
+				$("#doubletapExit").addClass("fadeInBottomHideUp");
+
+				setTimeout(function(){
+					$("#finished").addClass("fadeInBottom");
+					$("#finished").addClass("progress100");
+					$("#skip").addClass("fadeInUpHideBottom");
+					$("#adjustTimeText").addClass("backUpLittle");
+
+					setTimeout(function(){
+						if(!latitudeOn){
+							showMenu(true, false);
+						}
+					}, 1000)
+
+					setTimeout(function(){
+						$(".skipwrapper").hide();
+						$("#finished").addClass("fadeInBottomHideUp");
+					}, 5000)
+				}, 200);
+			}, 80)
+		}
+	}
