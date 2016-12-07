@@ -352,7 +352,7 @@ var changedToMouse = false;
 var changedBack = false;
 
 $(document).ready(function(){
-	init();
+
     
     
     windowWidth = $(window).width();
@@ -1643,6 +1643,7 @@ click(function(e){
 	};
 	
 	$("#start").click(function(event){
+        init();
     	$("#skip").click();
         for (i = 0; i < 7; i++) { 
             lati -= 10;
