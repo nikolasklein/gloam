@@ -351,9 +351,12 @@ var deleteDown = false;
 var changedToMouse = false;
 var changedBack = false;
 
-$(document).ready(function(){
+var leapConnected = false;
+var startedWithLeap = false;
 
+$(document).ready(function(){
     
+    init();
     
     windowWidth = $(window).width();
     windowHeight = $(window).height();
@@ -364,46 +367,60 @@ $(document).ready(function(){
 
         controller = new Leap.Controller();
         
+        console.log(controller);
+        
+        var controllerTest = Leap.loop(function(frame){
+            if(!leapConnected){
+                console.log("leap connected");
+                $("#startWithLeap").removeClass("disabled");
+                $(".leapMotionIntro").removeClass("disabled");
+                leapConnected = true;
+            }
+        });
+
         Leap.loop({
             hand: function(hand){
-                useLeap = true;
-                touching = false;
-                mouseDown = false;
-                moved = true;
-
-                // entering and exiting latitudeAdjustmentMode
-                
-                if(hand.grabStrength >= 0.7 && !leapPressed){
-                    enterLatitude();
-                    console.log("enterLeap");
-                    leapPressed = true;
+                if(startedWithLeap){
+                    console.log(controller);
+                    useLeap = true;
+                    touching = false;
+                    mouseDown = false;
+                    moved = true;
+    
+                    // entering and exiting latitudeAdjustmentMode
+                    
+                    if(hand.grabStrength >= 0.7 && !leapPressed){
+                        enterLatitude();
+                        console.log("enterLeap");
+                        leapPressed = true;
+                    }
+                    
+                    if(hand.grabStrength < 0.7 && leapPressed){
+                        exitLatitudeLeap();
+                        console.log("exitLeap");
+                        leapPressed = false;
+                    }
+    
+                    console.log(hand.palmPosition)
+    
+                    leapScreenX = Math.max(Math.min(map(hand.palmPosition[0], -110, 140, 0, windowWidth), windowWidth), 0);
+                    leapScreenY = Math.max(Math.min(map(hand.palmPosition[1], 60, 260, windowHeight, 0), windowHeight), 0);
+                    
+                    console.log(leapScreenX + " // " + leapScreenY);
+    
+                    if(latitudeEntered){
+                        secondMove(event);
+                    }else{
+                        lockTimehandler()
+                        groundMove(event);
+                    }
+    
+    /*
+                    console.log("blahand;");
+                      console.log(hand.grabStrength.toPrecision(2));
+                      console.log(hand.grabStrength * 100 + '%');
+    */
                 }
-                
-                if(hand.grabStrength < 0.7 && leapPressed){
-                    exitLatitudeLeap();
-                    console.log("exitLeap");
-                    leapPressed = false;
-                }
-
-                console.log(hand.palmPosition)
-
-                leapScreenX = Math.max(Math.min(map(hand.palmPosition[0], -110, 140, 0, windowWidth), windowWidth), 0);
-                leapScreenY = Math.max(Math.min(map(hand.palmPosition[1], 60, 260, windowHeight, 0), windowHeight), 0);
-                
-                console.log(leapScreenX + " // " + leapScreenY);
-
-                if(latitudeEntered){
-                    secondMove(event);
-                }else{
-                    lockTimehandler()
-                    groundMove(event);
-                }
-
-/*
-                console.log("blahand;");
-                  console.log(hand.grabStrength.toPrecision(2));
-                  console.log(hand.grabStrength * 100 + '%');
-*/
               }
           });
     }
@@ -1643,18 +1660,33 @@ click(function(e){
 	};
 	
 	$("#start").click(function(event){
-        init();
-    	$("#skip").click();
-        for (i = 0; i < 7; i++) { 
-            lati -= 10;
-            tapCreate();
-        }
 		$("body").addClass("noselect");	
 		if($("#readmore").hasClass("activeButton")){
 			$("#readmore").click();
 			setTimeout(function(){startClick();}, 100);
 		}else{
 			startClick();
+		}
+	});
+		
+	$("#startWithLeap").click(function(event){
+        if(!$(this).hasClass("disabled")){
+            if(leapConnected){
+                startedWithLeap = true;
+                $("body").addClass("startedWithLeap");
+            	$("#skip").click();
+                for (i = 0; i < 7; i++) { 
+                    lati -= 10;
+                    tapCreate();
+                }
+            }
+    		$("body").addClass("noselect");	
+    		if($("#readmore").hasClass("activeButton")){
+    			$("#readmore").click();
+    			setTimeout(function(){startClick();}, 100);
+    		}else{
+    			startClick();
+    		}
 		}
 	});
 	

@@ -482,6 +482,30 @@ p {
 	margin-left: 1rem;
 }
 
+#startWithLeap{
+    margin-left: 0.2rem;
+}
+
+#startWithLeap.disabled{
+    color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.25);
+    cursor: default !important;
+    background-color: transparent !important;
+}
+
+.leapMotionIntro{
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.leapMotionIntro.disabled{
+    display: none;
+    margin: 0px;
+}
+
 .activeButton{
 	animation: buttonBlink .3s;
 	-moz-animation: buttonBlink .3s;
