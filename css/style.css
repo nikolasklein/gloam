@@ -1078,6 +1078,10 @@ p {
   body {
     font-size: 85% !important;
   }
+  
+  #startWithLeap{
+      display: none;
+  }
 }
 
 
