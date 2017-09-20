@@ -4274,11 +4274,6 @@ function getAverage(thisArray) {
 
 
 	function exitLatitudeLeap(){
-
-		var checkNumber = 1;
-		if(touchCheck){
-			checkNumber = e.touches.length;
-		}
 		if(true){
 			exitLatitude(mouseX_);
             latitudeEntered = false;
