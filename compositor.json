@@ -1,0 +1,87 @@
+{
+  "name": "nikolasklein/gloam.io",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "TestingSite",
+  "branch": "",
+  "style": {
+    "name": "Swiss",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/SwissHeader",
+      "article": "article/SwissArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "heading": {
+      "fontWeight": 700,
+      "letterSpacing": "-0.01em"
+    },
+    "layout": {
+      "fluid": true
+    },
+    "colors": {
+      "text": "#000",
+      "background": "#fff",
+      "primary": "#05a",
+      "secondary": "#444",
+      "highlight": "#f30",
+      "border": "#ccc",
+      "muted": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "http://www.gloam.io",
+          "text": "Home"
+        },
+        {
+          "href": "https://github.com/nikolasklein/gloam.io",
+          "text": "GitHub"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "gloam.io",
+      "subhead": "gloam.io is an interactive data visualization",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "gloam.io: gloam.io is an interactive data visualization",
+          "url": "http://www.gloam.io"
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "nikolasklein",
+          "repo": "gloam.io"
+        }
+      ]
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<p>gloam.io is an interactive data visualization, that calculates&#x2014;based on given latitudes&#x2014;the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.</p>\n<p><a href=\"http://www.nikolasklein.de/gloam\">Try it out online!</a></p>\n<p>Should work in every major browser and on a lot of smartphones. On iOS you have the best experience but Google Chrome renders the best.</p>\n<p><a href=\"http://www.gloam.io\">Watch the visualization video!</a></p>\n<h2>Technological keypoints of gloam.io</h2>\n<ul>\n<li>Analyzing the sunrise phases and creating parameterized spectra with RainbowVis-JS</li>\n<li>Getting the different sunrise/sunset- and twilight-times based on a user given latitude</li>\n<li>Connecting the one day sequence to the spectra</li>\n</ul>\n<p>Since the code (which is located in one .js file) is a little bit messy&#x2014;sorry for that&#x2014;I&apos;m trying to describe the technological keypoints which make the whole thing come to life.</p>\n<h2>Analyzing the twilight and creating spectra with the help of RainbowVis-JS</h2>\n<h3>Abstracting the twilight subcategories</h3>\n<p>Very important for visualizing a sunrise and sunset are the different twilight phases. \nThere are four different twilight subcategories.</p>\n<ul>\n<li>Astronomical twilight</li>\n<li>Nautical twilight</li>\n<li>Civil twilight</li>\n</ul>\n<p>You can check the full information on <a href=\"http://en.wikipedia.org/wiki/Twilight\">Wikipedia</a>.</p>\n<p>I watched a lot of sunrise- and sunset timelapses to get a feeling for the colorchanges. For every twilight subcategory I abstracted 3 different keyframes out of a frame.</p>\n<p><strong>abstraction process</strong></p>\n<p><img src=\"http://nikolasklein.de/ideas/gloam/comparison.png\"></p>\n<p><strong>keyframes</strong></p>\n<p><img src=\"http://nikolasklein.de/ideas/gloam/twilight.png\"></p>\n<p>top row: Night, Astronomical twilight, Nautical twilight</p>\n<p>bottom row: Civil twilight, Sunrise/Sunset and Day</p>\n<h4>Every keyframe consist of a four color gradient.</h4>\n<h3>Creating spectra with RainbowVis-JS</h3>\n<p> Because every keyframe consists of a four color gradient, I can now seperate the colors and the positions of the two middle points of the gradient for every keyframe. I used <a href=\"https://github.com/anomal/RainbowVis-JS\">RainbowVis-JS</a> for an easy interpolation between the colors of the keyframes.</p>\n<p><strong>initialising the rainbows</strong></p>\n<pre>  <span class=\"hljs-keyword\">var</span> night_am_top = <span class=\"hljs-keyword\">new</span> Rainbow();\n  <span class=\"hljs-keyword\">var</span> night_am_firstQuart = <span class=\"hljs-keyword\">new</span> Rainbow();\n  <span class=\"hljs-keyword\">var</span> night_am_secondQuart = <span class=\"hljs-keyword\">new</span> Rainbow();\n  <span class=\"hljs-keyword\">var</span> night_am_bottom = <span class=\"hljs-keyword\">new</span> Rainbow();</pre><p><strong>setting the positions of the two middle points of a gradient</strong>  </p>\n<pre>  <span class=\"hljs-keyword\">var</span> night_am_firstQuartArr = [<span class=\"hljs-number\">89</span>, <span class=\"hljs-number\">57</span>, <span class=\"hljs-number\">20</span>, <span class=\"hljs-number\">42</span>];\n  <span class=\"hljs-keyword\">var</span> night_am_secondQuartArr = [<span class=\"hljs-number\">97</span>, <span class=\"hljs-number\">81</span>, <span class=\"hljs-number\">58</span>, <span class=\"hljs-number\">73</span>];</pre><p><strong>setting the spectrum for the 4 gradient points</strong></p>\n<pre>    night_am_top.setSpectrum(<span class=\"hljs-string\">&quot;#050314&quot;</span>, <span class=\"hljs-string\">&quot;#050314&quot;</span>, <span class=\"hljs-string\">&quot;#050314&quot;</span>, <span class=\"hljs-string\">&quot;#050314&quot;</span>);\n    night_am_firstQuart.setSpectrum(<span class=\"hljs-string\">&quot;#020109&quot;</span>, <span class=\"hljs-string\">&quot;#020109&quot;</span>, <span class=\"hljs-string\">&quot;#020109&quot;</span>, <span class=\"hljs-string\">&quot;#0a071b&quot;</span>);\n    night_am_secondQuart.setSpectrum(<span class=\"hljs-string\">&quot;#02010a&quot;</span>, <span class=\"hljs-string\">&quot;#05051e&quot;</span>, <span class=\"hljs-string\">&quot;#060419&quot;</span>, <span class=\"hljs-string\">&quot;#0b081d&quot;</span>);\n    night_am_bottom.setSpectrum(<span class=\"hljs-string\">&quot;#03031c&quot;</span>, <span class=\"hljs-string\">&quot;#080829&quot;</span>, <span class=\"hljs-string\">&quot;#080829&quot;</span>, <span class=\"hljs-string\">&quot;#09092c&quot;</span>);</pre><h2>Getting the different sunrise/sunset- and twilight-times based on a user given latitude</h2>\n<h3>The core of the PHP-script</h3>\n<pre>  [&#x2026;]\n  $sunrise=date_sunrise($ctime, SUNFUNCS_RET_TIMESTAMP, $latitude, $longitude, $zenith);\n  $sunset=date_sunset($ctime, SUNFUNCS_RET_TIMESTAMP, $latitude, $longitude, $zenith);\n  [&#x2026;]</pre><p>Guido Gerding from <a href=\"http://www.sonnenaufgang-sonnenuntergang.de/\">sonnenaufgang-sonnenuntergang.de</a> gave me this script, which I adjusted a little bit to better fit my needs.</p>\n<p>The <code>$zenith</code>-variable is responsible for getting the values of the specific twilight time.</p>\n<h3>The AJAX-requests for the sunrise and twilight times</h3>\n<pre>    <span class=\"hljs-keyword\">var</span> urlRise = <span class=\"hljs-string\">&quot;api.php?client=5mQNicMv2c&amp;longitude=0&amp;latitude=&quot;</span> + latitude + <span class=\"hljs-string\">&quot;&amp;zenith=90.83333333333&amp;year=2014&amp;month=1&amp;offsett=0&amp;nodst=TRUE&quot;</span>;\n    <span class=\"hljs-keyword\">var</span> urlCivil = <span class=\"hljs-string\">&quot;api.php?client=5mQNicMv2c&amp;longitude=0&amp;latitude=&quot;</span> + latitude + <span class=\"hljs-string\">&quot;&amp;zenith=96&amp;year=2014&amp;month=1&amp;offsett=0&amp;nodst=TRUE&quot;</span>;\n    <span class=\"hljs-keyword\">var</span> urlNaut = <span class=\"hljs-string\">&quot;api.php?client=5mQNicMv2c&amp;longitude=0&amp;latitude=&quot;</span> + latitude + <span class=\"hljs-string\">&quot;&amp;zenith=102&amp;year=2014&amp;month=1&amp;offsett=0&amp;nodst=TRUE&quot;</span>;\n    <span class=\"hljs-keyword\">var</span> urlAstro = <span class=\"hljs-string\">&quot;api.php?client=5mQNicMv2c&amp;longitude=0&amp;latitude=&quot;</span> + latitude + <span class=\"hljs-string\">&quot;&amp;zenith=108&amp;year=2014&amp;month=1&amp;offsett=0&amp;nodst=TRUE&quot;</span>;</pre><ul>\n<li>The longitude stays the same. It does not affect the sunrise and sunset times very much.</li>\n<li>The latitude is given by the user.</li>\n<li>The zenith defines which times will be returned.</li>\n</ul>\n<p>For every phase this returns a csv file with 365 lines of the sunrise/sunset time for every day of the year.</p>\n<p><a href=\"http://gloam.io/api.php?client=5mQNicMv2c&amp;longitude=0&amp;latitude=0&amp;zenith=90.933&amp;year=2014&amp;month=1&amp;offsett=0&amp;nodst=TRUE\">Get the sunrise and sunset times in a csv file for: 0N 0E </a></p>\n<p>Four of this csv files are used to calculate the day sequence and the duration for the sunrise, the sunset and for every twilight phase.</p>\n<h2>Connecting the one day sequence to the spectra</h2>\n<p>Based on the user given date and time gloam.io reads out the day sequence and checks in which phase it would be at that particular date and time. This is then used to specify which colors should be used in the gradient.</p>\n<hr>\n<p>If you have any questions - feel free to contact me!</p>\n<p>Niko &#x2013; <a href=\"http://www.nikolasklein.de\">nikolasklein.de</a></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/nikolasklein/gloam.io",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/nikolasklein",
+          "text": "nikolasklein"
+        }
+      ]
+    }
+  ]
+}
