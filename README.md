@@ -8,8 +8,6 @@ gloam.io is an interactive data visualization, that calculates—based on given 
 
 Should work in every major browser and on a lot of smartphones. On iOS you have the best experience but Google Chrome renders the best.
 
-[Watch the visualization video!](http://www.gloam.io)
-
 
 
 ## Technological keypoints of gloam.io
