@@ -1,8 +1,9 @@
-gloam.io
+gloam
 ==================
 
+> Disclaimer: I've written this years ago and the code is pretty unreadable. 🍝
 
-gloam.io is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.
+gloam is an interactive data visualization, that calculates—based on given latitudes—the sunrise, sunset and twilight times and creates a mesmerizing and stunning experience.
 
 [Try it out online!](http://www.nikolasklein.de/gloam)
 
@@ -10,7 +11,7 @@ Should work in every major browser and on a lot of smartphones. On iOS you have 
 
 
 
-## Technological keypoints of gloam.io
+## Technological keypoints of gloam
 - Analyzing the sunrise phases and creating parameterized spectra with RainbowVis-JS
 - Getting the different sunrise/sunset- and twilight-times based on a user given latitude
 - Connecting the one day sequence to the spectra
@@ -104,14 +105,14 @@ The `$zenith`-variable is responsible for getting the values of the specific twi
 
 For every phase this returns a csv file with 365 lines of the sunrise/sunset time for every day of the year.
 
-[Get the sunrise and sunset times in a csv file for: 0N 0E ](http://gloam.io/api.php?client=5mQNicMv2c&longitude=0&latitude=0&zenith=90.933&year=2014&month=1&offsett=0&nodst=TRUE)
+[Get the sunrise and sunset times in a csv file for: 0N 0E ](http://nikolasklein.de/gloam/api.php?client=5mQNicMv2c&longitude=0&latitude=0&zenith=90.933&year=2014&month=1&offsett=0&nodst=TRUE)
 
 Four of this csv files are used to calculate the day sequence and the duration for the sunrise, the sunset and for every twilight phase.
 
 
 ## Connecting the one day sequence to the spectra
 
-Based on the user given date and time gloam.io reads out the day sequence and checks in which phase it would be at that particular date and time. This is then used to specify which colors should be used in the gradient.
+Based on the user given date and time gloam reads out the day sequence and checks in which phase it would be at that particular date and time. This is then used to specify which colors should be used in the gradient.
 
 
 ---
